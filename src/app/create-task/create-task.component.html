@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Bienvenidos a nuestra aplicación</h1>
+</div>
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="addTarea()">
+        <h3>Introducir tarea pendiente</h3>
+        <label>Tarea</label>
+        <input type="text" formControlName="tarea">
+        <label>Persona</label>
+        <input type="text" formControlName="Asignacion">
+        <button type="submit">Añadir</button>
+    </form>
+<table>
+    <thead>
+        <tr>
+            <th>Tarea</th>
+            <th>Persona</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let tarea of tareas">
+            <td>{{ tarea.tarea }}</td>
+            <td>{{ tarea.Asignacion }}</td>
+            <td>{{ tarea.estado }}</td>
+            <td>
+                <button *ngIf="tarea.estado === 'Pendiente'" (click)="marcarRealizado(tarea.id)">Marcar como Realizado</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
